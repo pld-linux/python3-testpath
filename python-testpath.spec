@@ -9,7 +9,7 @@ Summary:	Test utilities for code working with files and commands
 Summary(pl.UTF-8):	Narzędzia testowe dla kodu działającego na plikach i poleceniach
 Name:		python-testpath
 Version:	0.4.2
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/testpath/
