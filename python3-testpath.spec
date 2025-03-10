@@ -7,7 +7,7 @@ Summary:	Test utilities for code working with files and commands
 Summary(pl.UTF-8):	Narzędzia testowe dla kodu działającego na plikach i poleceniach
 Name:		python3-testpath
 Version:	0.6.0
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/testpath/
