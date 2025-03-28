@@ -7,7 +7,7 @@ Summary:	Test utilities for code working with files and commands
 Summary(pl.UTF-8):	Narzędzia testowe dla kodu działającego na plikach i poleceniach
 Name:		python3-testpath
 Version:	0.6.0
-Release:	5
+Release:	6
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/testpath/
@@ -15,7 +15,8 @@ Source0:	https://files.pythonhosted.org/packages/source/t/testpath/testpath-%{ve
 # Source0-md5:	9fd4339f76da12d15bc718e4aa2566e9
 URL:		https://pypi.org/project/testpath/
 BuildRequires:	python3-modules >= 1:3.5
-BuildRequires:	python3-setuptools
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
 %if %{with tests}
 BuildRequires:	python3-pytest
 %endif
@@ -57,36 +58,8 @@ Dokumentacja API modułu Pythona testpath.
 %prep
 %setup -q -n testpath-%{version}
 
-# setuptools stub
-cat >setup.py <<EOF
-from setuptools import setup
-setup()
-EOF
-
-# until we have flit...
-# (extracted from pyproject.toml - keep in sync!)
-cat >setup.cfg <<'EOF'
-[metadata]
-name = testpath
-version = %{version}
-description = Test utilities for code working with files and commands
-author = Jupyter Development Team
-author_email = jupyter@googlegroups.com
-license = BSD
-license_file = LICENSE
-classifiers =
-    Intended Audience :: Developers
-    License :: OSI Approved :: BSD License
-    Programming Language :: Python
-    Programming Language :: Python :: 3
-    Topic :: Software Development :: Testing
-[options]
-packages = testpath
-python_requires = >=3.5
-EOF
-
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
@@ -101,7 +74,7 @@ PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -110,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc LICENSE README.rst
 %{py3_sitescriptdir}/testpath
-%{py3_sitescriptdir}/testpath-%{version}-py*.egg-info
+%{py3_sitescriptdir}/testpath-%{version}.dist-info
 
 %if %{with doc}
 %files apidocs
