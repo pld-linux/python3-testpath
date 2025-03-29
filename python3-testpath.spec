@@ -21,7 +21,7 @@ BuildRequires:	python3-installer
 BuildRequires:	python3-pytest
 %endif
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.714
+BuildRequires:	rpmbuild(macros) >= 2.044
 %if %{with doc}
 BuildRequires:	sphinx-pdg-3
 %endif
