@@ -14,9 +14,11 @@ Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/t/testpath/testpath-%{version}.tar.gz
 # Source0-md5:	9fd4339f76da12d15bc718e4aa2566e9
 URL:		https://pypi.org/project/testpath/
-BuildRequires:	python3-modules >= 1:3.5
 BuildRequires:	python3-build
+BuildRequires:	python3-flit_core >= 3.2.0
+BuildRequires:	python3-flit_core < 4
 BuildRequires:	python3-installer
+BuildRequires:	python3-modules >= 1:3.5
 %if %{with tests}
 BuildRequires:	python3-pytest
 %endif
